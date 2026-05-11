@@ -1,0 +1,47 @@
+# ============================================================
+# docker-compose.yml
+# Smart Classroom Energy Saver — Multi-experiment runner
+# ============================================================
+# Run both experiments:  docker-compose up
+# Run only exp1:         docker-compose up exp1
+# Run only exp2:         docker-compose up exp2
+# Stop all:              docker-compose down
+# ============================================================
+
+version: "3.9"
+
+services:
+
+  # ---- Experiment 1: Baseline Q-Learning ----
+  exp1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: classroom-rl-exp1
+    command: python train.py --config config/qlearning_v1.yaml
+    volumes:
+      # Mount results + models so files are saved to your local machine
+      - ./results:/app/results
+      - ./models:/app/models
+    environment:
+      - MPLBACKEND=Agg       # headless matplotlib
+      - PYTHONUNBUFFERED=1   # see print() output in real time
+    restart: "no"            # don't restart after training finishes
+
+  # ---- Experiment 2: Tuned Q-Learning ----
+  exp2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: classroom-rl-exp2
+    command: python train.py --config config/qlearning_v2.yaml
+    volumes:
+      - ./results:/app/results
+      - ./models:/app/models
+    environment:
+      - MPLBACKEND=Agg
+      - PYTHONUNBUFFERED=1
+    restart: "no"
+    # Wait for exp1 to finish before starting exp2
+    depends_on:
+      - exp1

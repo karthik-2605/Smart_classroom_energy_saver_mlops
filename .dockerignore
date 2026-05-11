@@ -1,0 +1,13 @@
+# .dockerignore
+# Files to exclude from Docker build context (keeps image small)
+
+__pycache__/
+*.pyc
+*.pkl
+*.png
+.git/
+.gitignore
+venv/
+.venv/
+*.md
+.DS_Store
