@@ -1,0 +1,35 @@
+# ============================================================
+# config/qlearning_v2.yaml
+# Smart Classroom RL — Experiment 2 (Tuned Q-Learning)
+# ============================================================
+# Git tag: exp-qlearning-2
+#
+# Tuned configuration with higher learning rate and slower
+# epsilon decay for better convergence in complex states.
+# Compare results_2.csv against results_1.csv to quantify
+# the improvement from hyperparameter tuning.
+# ============================================================
+
+experiment_name: "Q-Learning Tuned (v2)"
+notes: "Higher LR (0.2), slower epsilon decay (0.998), more episodes. Expect better convergence."
+
+# --- Training ---
+episodes:  800        # More episodes for thorough exploration
+max_steps: 100        # Same step budget per episode
+seed:      42         # Same seed — changes are purely from hyperparams
+
+# --- Q-Learning hyperparameters ---
+learning_rate: 0.2    # Higher alpha: faster learning (risk: instability)
+gamma:         0.95   # Slightly higher gamma: more long-term planning
+
+# --- Exploration (epsilon-greedy) ---
+epsilon_start: 1.0    # Still start fully exploratory
+epsilon_min:   0.02   # Allow even lower final exploration
+epsilon_decay: 0.998  # Slower decay → more exploration before exploitation
+                      # After ~800 eps: epsilon ≈ 0.20 (still learning)
+
+# --- Output paths ---
+model_path: "models/q_table_v2.pkl"
+csv_path:   "results/results_2.csv"
+log_path:   "results/log.json"
+plot_path:  "results/training_curves_v2.png"

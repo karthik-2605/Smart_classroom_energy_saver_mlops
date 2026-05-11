@@ -1,0 +1,33 @@
+# ============================================================
+# config/qlearning_v1.yaml
+# Smart Classroom RL — Experiment 1 (Baseline Q-Learning)
+# ============================================================
+# Git tag: exp-qlearning-1
+#
+# Baseline configuration with standard hyperparameters.
+# Use this to establish a performance baseline before tuning.
+# ============================================================
+
+experiment_name: "Q-Learning Baseline (v1)"
+notes: "Baseline run with default hyperparameters. Standard epsilon decay."
+
+# --- Training ---
+episodes:  500        # Total training episodes
+max_steps: 100        # Maximum steps per episode
+seed:      42         # Random seed for full reproducibility
+
+# --- Q-Learning hyperparameters ---
+learning_rate: 0.1    # Alpha: how fast the agent updates Q-values
+gamma:         0.9    # Discount factor: importance of future rewards
+
+# --- Exploration (epsilon-greedy) ---
+epsilon_start: 1.0    # Start fully exploratory
+epsilon_min:   0.05   # Minimum exploration rate
+epsilon_decay: 0.995  # Multiplicative decay per episode
+                      # After ~600 eps: epsilon ≈ 0.05
+
+# --- Output paths ---
+model_path: "models/q_table_v1.pkl"
+csv_path:   "results/results_1.csv"
+log_path:   "results/log.json"
+plot_path:  "results/training_curves_v1.png"
