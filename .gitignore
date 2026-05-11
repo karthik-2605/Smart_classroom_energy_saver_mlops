@@ -1,0 +1,51 @@
+# ============================================================
+# .gitignore
+# Smart Classroom RL — Files to exclude from version control
+# ============================================================
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Trained model files (large binary — use Git LFS or DVC if needed)
+models/*.pkl
+
+# Generated plots (reproducible from code)
+results/*.png
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# ---- KEEP in Git ----
+# results/results_1.csv   ← experiment output (tracked)
+# results/results_2.csv   ← experiment output (tracked)
+# results/log.json        ← experiment log (tracked)
+# config/                 ← all configs tracked
+!results/results_1.csv
+!results/results_2.csv
+!results/log.json

@@ -1,0 +1,22 @@
+# ============================================================
+# requirements.txt
+# Smart Classroom RL — Python Dependencies
+# ============================================================
+# Install with: pip install -r requirements.txt
+# Tested with Python 3.9, 3.10, 3.11
+# ============================================================
+
+# Core scientific computing
+numpy>=1.24.0
+
+# Data manipulation and CSV handling
+pandas>=2.0.0
+
+# YAML configuration files
+PyYAML>=6.0
+
+# Plotting and visualisation
+matplotlib>=3.7.0
+
+# Progress bars (optional but useful for long training runs)
+tqdm>=4.65.0
