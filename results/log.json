@@ -63,5 +63,18 @@
     "average_comfort_score": 0.9307,
     "average_wait_time": 0.0331,
     "notes": "Higher LR (0.2), slower epsilon decay (0.998), more episodes. Expect better convergence."
+  },
+  {
+    "run_id": "97bd7372",
+    "timestamp": "2026-05-11T09:59:33.071327",
+    "episodes": 800,
+    "epsilon": 1.0,
+    "learning_rate": 0.2,
+    "gamma": 0.95,
+    "average_reward": 108.025,
+    "average_energy_saved": 2.6856,
+    "average_comfort_score": 0.9307,
+    "average_wait_time": 0.0331,
+    "notes": "Higher LR (0.2), slower epsilon decay (0.998), more episodes. Expect better convergence."
   }
 ]
