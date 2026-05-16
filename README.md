@@ -17,9 +17,6 @@
 8. [MLOps Monitoring Plan](#8-mlops-monitoring-plan)
 9. [File Explanations](#9-file-explanations)
 10. [Sample Outputs](#10-sample-outputs)
-11. [Viva Q&A](#11-viva-qa)
-12. [GitHub Repository Description](#12-github-repository-description)
-13. [Screenshots Guide (for Report)](#13-screenshots-guide-for-report)
 
 ---
 
