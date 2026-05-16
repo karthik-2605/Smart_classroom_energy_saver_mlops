@@ -498,7 +498,7 @@ episode,total_reward,avg_energy_saved,avg_comfort_score,avg_wait_time,epsilon
     "notes": "Baseline run with default hyperparameters."
   }
 ]
-``
+```
 ---
 
 ## GitHub Repository Description
