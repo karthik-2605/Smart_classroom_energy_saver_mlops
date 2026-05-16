@@ -524,22 +524,3 @@ Academic Project: MLOps Assignment — Smart Classroom Energy Management
 **Topics (GitHub tags):** `reinforcement-learning` `q-learning` `mlops` `energy-saving` `smart-classroom` `experiment-tracking` `python` `numpy` `matplotlib`
 
 ---
-
-## 13. Screenshots Guide (for Report)
-
-Include the following screenshots/figures in your report:
-
-| Figure # | What to Capture                                      | How to Get It                              |
-|----------|------------------------------------------------------|--------------------------------------------|
-| Fig 1    | Folder structure in VS Code / terminal               | `tree smart-classroom-rl/`                 |
-| Fig 2    | Training console output (episode progress)           | Run `python train.py --config ...`         |
-| Fig 3    | Training curves plot (4-panel PNG)                   | `results/training_curves_v1.png`           |
-| Fig 4    | results_1.csv open in Excel / pandas                 | `pd.read_csv('results/results_1.csv')`     |
-| Fig 5    | log.json in VS Code showing both experiment records  | Open `results/log.json`                    |
-| Fig 6    | `git log --oneline --graph` showing tags             | Run in terminal                            |
-| Fig 7    | Q-table values (policy summary output)               | Printed at end of training                 |
-| Fig 8    | Experiment comparison table (v1 vs v2 metrics)       | Side-by-side from log.json                 |
-| Fig 9    | Reward curve showing learning (negative→positive)    | From training_curves_v1.png panel 1        |
-| Fig 10   | Monitoring plan diagram (hand-drawn or draw.io)      | Based on Section 8 of this README          |
-
----
