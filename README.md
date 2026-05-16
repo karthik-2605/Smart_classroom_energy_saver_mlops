@@ -498,89 +498,10 @@ episode,total_reward,avg_energy_saved,avg_comfort_score,avg_wait_time,epsilon
     "notes": "Baseline run with default hyperparameters."
   }
 ]
-```
-
+``
 ---
 
-## 11. Viva Q&A
-
-### Section A: Reinforcement Learning
-
-**Q1: What is Reinforcement Learning? How does it differ from supervised learning?**  
-**A:** RL is a learning paradigm where an agent learns by interacting with an environment. It receives rewards or penalties for its actions and learns a policy that maximises cumulative reward. Unlike supervised learning, RL has no labelled dataset — the agent generates its own training data through experience. In this project, the agent tries device combinations and learns which are best for each classroom state.
-
-**Q2: Explain the Q-Learning update rule.**  
-**A:** The Bellman equation:
-```
-Q(s,a) ← Q(s,a) + α × [r + γ × max_a' Q(s',a') − Q(s,a)]
-```
-- `α` = learning rate (how much to update)
-- `γ` = discount factor (importance of future rewards)
-- `r + γ × max Q(s',a')` = target (what Q should be)
-- The difference is the TD error (how wrong our current estimate is)
-
-**Q3: What is epsilon-greedy exploration?**  
-**A:** A strategy to balance exploration vs exploitation. With probability ε, the agent picks a random action (explore new options). With probability 1-ε, it picks the action with highest Q-value (exploit known knowledge). ε starts at 1.0 (fully random) and decays toward 0.05 (mostly greedy) as training progresses.
-
-**Q4: Why is the AC given the highest penalty when it runs in an empty room?**  
-**A:** AC consumes 1500W — 10-25× more than other devices. Running it unnecessarily causes disproportionate energy waste. The reward function reflects real-world electricity costs: penalty(-5.0) for AC in empty room vs penalty(-2.0) for lights in empty room.
-
-**Q5: What is the state space size in this project?**  
-**A:** 4 (occupancy) × 3 (temperature) × 4 (time) × 2 (lights) × 2 (fan) × 2 (AC) × 2 (projector) = **384 unique states**. Each maps to 16 possible actions, so the Q-table has 384 × 16 = 6,144 entries.
-
----
-
-### Section B: MLOps
-
-**Q6: What is MLOps and why is it important?**  
-**A:** MLOps (Machine Learning Operations) is the practice of applying DevOps principles to ML projects — covering reproducibility, versioning, experiment tracking, deployment, and monitoring. Without MLOps, experiments are undocumented, models can't be reliably reproduced, and degradation goes undetected. In this project, MLOps ensures that experiments 1 and 2 are fully reproducible and comparable.
-
-**Q7: How does this project achieve reproducibility?**  
-**A:** Three mechanisms:
-1. **Fixed seeds** (`seed: 42` in config) — same random numbers every run
-2. **Config files** (YAML) — all hyperparameters version-controlled, not hardcoded
-3. **Git tags** — `git checkout exp-qlearning-1` restores exact code state
-
-**Q8: What is the difference between a git commit and a git tag?**  
-**A:** A commit is a checkpoint of changes. A tag is a named pointer to a specific commit — like a bookmark. In ML, we use tags to label experiment milestones (`exp-qlearning-1`) so we can return to exact states without remembering commit hashes.
-
-**Q9: Why store experiment results in both CSV and JSON?**  
-**A:** CSV is best for time-series data (per-episode metrics) — easy to load with pandas for analysis. JSON is best for structured summary records with mixed data types — each experiment's hyperparameters + final metrics in one object. Together they support both detailed analysis and quick comparison.
-
-**Q10: What is concept drift and how would you detect it in this system?**  
-**A:** Concept drift means the data distribution changes over time — for example, classroom usage patterns shifting due to new timetables. We detect it by comparing the weekly occupancy/temperature distribution against the training distribution using statistical tests (KL-divergence, Population Stability Index). If drift exceeds a threshold, we trigger retraining.
-
----
-
-### Section C: Experiment Tracking
-
-**Q11: What metrics do you track and why each matters?**  
-**A:**
-- `average_reward` — overall agent performance (higher = better)
-- `average_energy_saved` — primary business goal (kWh saved)
-- `average_comfort_score` — constraint (must stay >0.80)
-- `average_wait_time` — responsiveness proxy (lower = better)
-- `epsilon` at end of training — how much exploration remained
-
-**Q12: How would you use MLflow in this project?**  
-**A:** Replace `log_experiment()` in utils.py with `mlflow.log_params(config)` and `mlflow.log_metrics(metrics)`. Run `mlflow ui` to get a browser dashboard comparing all experiments. The Q-table could be logged as an artifact with `mlflow.log_artifact("models/q_table_v1.pkl")`.
-
-**Q13: How do you compare Experiment 1 vs Experiment 2?**  
-**A:** Load both CSVs into pandas, compare rolling means of `total_reward` for the last 100 episodes. Also compare `log.json` entries side by side. Visualise both training curves on the same plot to see convergence rates.
-
----
-
-### Section D: Monitoring
-
-**Q14: What would you monitor in a real classroom deployment?**  
-**A:** Eight categories: (1) energy consumption per device, (2) AC overuse, (3) comfort score, (4) occupancy sensor anomalies, (5) device failures, (6) temperature spikes, (7) sensor inactivity/data drift, and (8) safety events (fire, overload). Each has a specific alert threshold and automated response.
-
-**Q15: What is the difference between model monitoring and data monitoring?**  
-**A:** Data monitoring checks if incoming sensor data matches training distribution (has the environment changed?). Model monitoring checks if the model's decisions are still effective (are rewards declining?). Both are needed — data drift triggers retraining, model performance decline triggers investigation.
-
----
-
-## 12. GitHub Repository Description
+## GitHub Repository Description
 
 ```
 🏫 Smart Classroom Energy Saver | Reinforcement Learning + MLOps
@@ -622,11 +543,3 @@ Include the following screenshots/figures in your report:
 | Fig 10   | Monitoring plan diagram (hand-drawn or draw.io)      | Based on Section 8 of this README          |
 
 ---
-
-## License
-
-MIT License — free to use for academic and educational purposes.
-
----
-
-*Built for university MLOps assignment — demonstrating end-to-end Reinforcement Learning with professional experiment tracking, reproducibility, and monitoring.*
