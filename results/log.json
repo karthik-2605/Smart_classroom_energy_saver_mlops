@@ -76,5 +76,18 @@
     "average_comfort_score": 0.9307,
     "average_wait_time": 0.0331,
     "notes": "Higher LR (0.2), slower epsilon decay (0.998), more episodes. Expect better convergence."
+  },
+  {
+    "run_id": "7c81b2da",
+    "timestamp": "2026-05-14T08:57:39.371727",
+    "episodes": 500,
+    "epsilon": 1.0,
+    "learning_rate": 0.1,
+    "gamma": 0.9,
+    "average_reward": 170.865,
+    "average_energy_saved": 4.0555,
+    "average_comfort_score": 0.9642,
+    "average_wait_time": 0.0157,
+    "notes": "Baseline run with default hyperparameters. Standard epsilon decay."
   }
 ]
