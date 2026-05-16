@@ -33,3 +33,12 @@ model_path: "models/q_table_v2.pkl"
 csv_path:   "results/results_2.csv"
 log_path:   "results/log.json"
 plot_path:  "results/training_curves_v2.png"
+
+# Tuned parameters for experiment v2
+learning_rate: 0.2
+gamma: 0.95
+episodes: 800
+epsilon: 1.0
+epsilon_decay: 0.998
+seed: 42
+notes: "Tuned run with higher LR and gamma"
